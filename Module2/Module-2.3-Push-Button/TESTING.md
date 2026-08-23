@@ -26,11 +26,25 @@ continues running without crashing.
 ## Test Environment
 
 - Language: C++
-- Compiler: To be recorded when testing is performed
+- Compiler: 'g++' in GitHub Codespaces 
 - Operating system: Windows
 - Source file tested: `main.cpp`
 
 ## Test Results
 
-Testing will be performed after the initial program implementation is added.
-Actual results, pass/fail status, and discovered defects will be recorded here.
+| Test ID | Actual Result | Status |
+|---|---|---|
+| TC-01 | Program displayed the initial state as Off. | Pass |
+| TC-02 | Input `1` transitioned the system from Off to On. | Pass |
+| TC-03 | Input `1` while On kept the system On. | Pass |
+| TC-04 | Input `0` while Off kept the system Off. | Pass |
+| TC-05 | Input `0` while On kept the system On. | Pass |
+| TC-06 | Invalid numeric input `7` displayed an error and the program continued. | Pass |
+| TC-07 | Invalid text input `hello` displayed an error and the program continued. | Pass |
+| TC-08 | Input `q` ended the program normally and displayed the final press count. | Pass |
+
+## Test Summary
+
+All eight planned test cases passed. The program compiled successfully using
+`g++` in GitHub Codespaces. No functional defects were identified during
+testing.
