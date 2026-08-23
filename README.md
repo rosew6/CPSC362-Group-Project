@@ -13,7 +13,7 @@ Lead Developer: **Aaron Littlejohn**
 Responsibilities: Take charge of the main coding tasks, ensure code quality, and integrate different parts of the project.
 Skills: Strong programming skills and experience with the relevant programming language (Python or C++).
 
-Researcher/Analyst:
+Researcher/Analyst: **Cameron Long**
 Responsibilities: Dive into the theoretical aspects, ensure the implementation aligns with computational theory, and assist with complex problem-solving.
 Skills: Good understanding of computational models and theory.
 
