@@ -77,11 +77,50 @@ The NFA accepts binary strings containing at least one `1`.
 ## Test Environment
 
 - Language: C++17
-- Compiler: To be recorded after testing
+- Compiler: `g++` with C++17
 - Environment: GitHub Codespaces
 - Source file: `main.cpp`
 
 ## Test Results
 
-Testing will be performed after compilation. Actual results, pass/fail status,
-and any discovered defects will be recorded in this section.
+### DFA Results
+
+| Test ID | Actual Result | Status |
+|---|---|---|
+| DFA-01 | Input `1` ended in accepting state q1. | Pass |
+| DFA-02 | Input `101` ended in accepting state q1. | Pass |
+| DFA-03 | Input `100` ended in non-accepting state q0. | Pass |
+| DFA-04 | `EMPTY` remained in non-accepting start state q0. | Pass |
+| DFA-05 | Input `102` reported invalid symbol `2`. | Pass |
+| DFA-06 | `QUIT` closed the simulator normally. | Pass |
+
+### NFA Results
+
+| Test ID | Actual Result | Status |
+|---|---|---|
+| NFA-01 | Input `000` left only non-accepting state q0 active. | Pass |
+| NFA-02 | Input `001` produced active states q0 and q1 and was accepted. | Pass |
+| NFA-03 | Input `1010` retained accepting state q1 and was accepted. | Pass |
+| NFA-04 | `EMPTY` remained in non-accepting start state q0. | Pass |
+| NFA-05 | Input `12` reported invalid symbol `2`. | Pass |
+| NFA-06 | `QUIT` closed the simulator normally. | Pass |
+
+### Validation Results
+
+| Test ID | Actual Result | Status |
+|---|---|---|
+| VAL-01 | Invalid automata type `BAD` was rejected. | Pass |
+| VAL-02 | Duplicate state `q0` was rejected. | Pass |
+| VAL-03 | Multi-character symbol `00` was rejected. | Pass |
+| VAL-04 | Undefined start state `bad` was rejected. | Pass |
+| VAL-05 | Undefined accepting state `bad` was rejected. | Pass |
+| VAL-06 | Undefined transition destination `bad` was rejected. | Pass |
+| VAL-07 | Out-of-range numeric entries were rejected. | Pass |
+
+## Test Summary
+
+All 19 planned DFA, NFA, and validation test cases passed. The program compiled
+successfully using `g++` with the C++17 standard in GitHub Codespaces. It
+displayed the expected state-transition sequences, acceptance results, input
+validation messages, and normal termination behavior. No functional defects
+remain.
