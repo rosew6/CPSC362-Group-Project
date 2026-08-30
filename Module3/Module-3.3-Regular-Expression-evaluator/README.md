@@ -30,6 +30,7 @@ Kleene Star  a*, aaaa Repeat the a transistion  Accepted
 •	The program takes input to enter a regular expression followed by a string to test.  The expression is then converted into an NFA, and the input string is processed through its transitions, then the program displays the accepted/rejected/error status of the string. 
 •	Example Output: 
   <img width="636" height="106" alt="image" src="https://github.com/user-attachments/assets/8f6109c3-35eb-4c81-a898-54d1252eeb6c" />
+
 Example 1: Kleene star mismatch.  
   
 4. Additional Features and Enhancements 
