@@ -21,6 +21,6 @@ Tester/Debugger: **Jacob Gainley**
 Responsibilities: Develop and run test cases, identify bugs, and work with the developer to resolve issues.
 Skills: Detail-oriented with a knack for problem-solving and debugging.
 
-Documentation Specialist (optional if you have five members):
+Documentation Specialist: **Raymond Claudio**
 Responsibilities: Document the code, write user guides, and prepare the final report or presentation.
 Skills: Strong writing skills and attention to detail.
