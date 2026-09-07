@@ -1,0 +1,8 @@
+3 2
+A B C
+0 1
+A
+1 C
+A B C
+B B C
+C C C
