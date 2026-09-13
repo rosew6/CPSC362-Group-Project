@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(CFG_ParserRecognizer
-    CFG Grammar CFG_ParserRecognizer.cpp
+    "CFG Grammar ParserRecognizer.cpp"
 )
 
 if (MSVC)
