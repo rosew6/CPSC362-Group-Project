@@ -1,0 +1,42 @@
+# group 1
+1 test1 eps Accepted
+1 test2 01 Accepted
+1 test3 0011 Accepted
+1 test4 000111 Accepted
+1 test5 0 Rejected
+1 test6 1 Rejected
+1 test7 001 Rejected
+1 test8 011 Rejected
+1 test9 0101 Rejected
+1 test10 00000000000000000000000000000000000000001111111111111111111111111111111111111111 Accepted
+1 test11 0000000000000000000000000000000000000000111111111111111111111111111111111111111 Rejected
+
+# group 2
+2 test1 eps Accepted
+2 test2 00 Accepted
+2 test3 11 Accepted
+2 test4 0110 Accepted
+2 test5 1001 Accepted
+2 test6 010010 Accepted
+2 test7 0 Rejected
+2 test8 010 Rejected
+2 test9 0101 Rejected
+
+# group 3
+3 test1 a Accepted
+
+# group 4
+4 test1 a Accepted
+4 test2 aa Rejected
+
+# group 5
+5 test1 b InvalidInput
+5 test2 a InvalidPDA
+5 test3 a InvalidPDA
+
+# group 6
+6 test1 a Accepted
+6 test2 eps Rejected
+
+# group 7 
+7 test1 eps LimitExceeded 5
