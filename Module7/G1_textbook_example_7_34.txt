@@ -1,0 +1,24 @@
+S
+3
+A a
+B b
+C a
+5
+S A B
+S B C
+A B A
+B C C
+C A B
+12
+baaba
+ba
+ab
+a
+b
+aa
+bb
+aba
+bab
+aab
+bba
+abab

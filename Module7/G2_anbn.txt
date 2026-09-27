@@ -1,0 +1,22 @@
+S
+2
+A a
+B b
+3
+S A B
+S A C
+C S B
+13
+ab
+aabb
+aaabbb
+aaaabbbb
+aaaaabbbbb
+a
+b
+aab
+abb
+abab
+ba
+aaaaabbbb
+c
