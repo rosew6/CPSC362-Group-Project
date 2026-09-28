@@ -1,6 +1,33 @@
 # CPSC362-Group-Project
 Group repository for CPSC 362 automata projects
 
+## Module 7.3: Context-Free Language Membership Checker
+
+This C++17 program uses the Cocke–Younger–Kasami (CYK) algorithm to check whether each nonempty query string belongs to a context-free grammar already in Chomsky normal form (CNF). It reads the grammar and queries from a text file and prints `query: ACCEPT` or `query: REJECT` for each query in order.
+
+### Compile
+
+```bash
+g++ -std=c++17 -Wall -Wextra -pedantic Context_Free_Language_Checker.cpp -o cfl_checker
+```
+
+### Run
+
+```bash
+./cfl_checker G1_textbook_example_7_34.txt
+./cfl_checker G2_anbn.txt
+./cfl_checker G1_group_tests.txt
+```
+
+Run these commands from the `Module7` folder. On Windows, use `cfl_checker.exe` in place of `./cfl_checker`.
+
+### Test files
+
+- `G1_textbook_example_7_34.txt`: textbook grammar and supplied queries; `baaba` is accepted.
+- `G2_anbn.txt`: supplied tests for strings of the form aⁿbⁿ, where n is at least 1.
+- `G1_group_tests.txt`: the G1 tests plus two group-created queries, `aaa` (accepted) and `bbb` (rejected).
+
+The program expects one input filename as its command-line argument. Each file lists the start variable, terminal rules, binary rules, and nonempty queries with their respective counts. It does not convert grammars to CNF.
 
 Group Roles:
 __________________________________
