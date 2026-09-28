@@ -1,92 +1,68 @@
+#include <array>
 #include <fstream>
 #include <iostream>
+#include <set>
+#include <string>
+#include <vector>
 
-// "Dictionary" struct for productions
-typedef struct {
-    char key;
-    char value;
-} TerminalPair;
+struct TerminalRule { char head, terminal; };
+struct BinaryRule { char head, left, right; };
 
-typedef struct {
-    char head;
-    char left;
-    char right;
-} BinaryPair;
+bool accepts(const std::string& word, char start,
+             const std::vector<TerminalRule>& terminals,
+             const std::vector<BinaryRule>& binaries) {
+    const std::size_t n = word.size();
+    if (n == 0) return false;
+    std::vector<std::vector<std::set<char>>> table(n, std::vector<std::set<char>>(n));
+    for (std::size_t i = 0; i < n; ++i)
+        for (const auto& rule : terminals)
+            if (rule.terminal == word[i]) table[i][i].insert(rule.head);
 
-typedef struct {
-    std::string query;
-    bool accepted;
-} QueryPair;
+    for (std::size_t length = 2; length <= n; ++length) {
+        for (std::size_t i = 0; i + length <= n; ++i) {
+            const std::size_t j = i + length - 1;
+            for (std::size_t k = i; k < j; ++k)
+                for (const auto& rule : binaries)
+                    if (table[i][k].count(rule.left) && table[k + 1][j].count(rule.right))
+                        table[i][j].insert(rule.head);
+        }
+    }
+    return table[0][n - 1].count(start) != 0;
+}
 
-// Linked list for queries
-typedef struct Node{
-    std::string query;
-    struct Node *next;
-} Node;
-
-int main(int argc, char* argv[]){
-    std::ifstream file_input("G1_textbook_example_7_34.txt");
-    if(!file_input) {
-        std::cerr << "Unable to open test file: ";
+int main(int argc, char* argv[]) {
+    if (argc != 2) {
+        std::cerr << "Usage: " << argv[0] << " input_file\n";
         return 1;
     }
-
-    std::string line;
-    std::string start_variable = "";
-
-    // Declaration of our production structures
-    int num_terminal;
-    int num_binary;
-    int num_queries;
-    std::vector<TerminalPair> terminal_productions;
-    std::vector<BinaryPair> binary_productions;
-    std::vector<QueryPair> queries;
-
-    // Read and store the start variable
-    file_input >> start_variable;
-
-    // Read all the terminal productions in the file
-    file_input >> num_terminal;
-    for(int i = 0; i < num_terminal; i++){
-        char head, terminal;
-        file_input >> head >> terminal;
-        // Store the head and terminal in a pair in the vector
-        terminal_productions.push_back({head, terminal});
+    std::ifstream input(argv[1]);
+    if (!input) {
+        std::cerr << "Unable to open input file: " << argv[1] << '\n';
+        return 1;
     }
-
-    // Read all the binary productions in the file
-    file_input >> num_binary;
-    for(int i = 0; i < num_binary; i++){
-        char head, left, right;
-        file_input >> head >> left >> right;
-        // Store the binary production in the binary_productions vector
-        binary_productions.push_back({head, left, right});
+    char start;
+    int terminal_count, binary_count, query_count;
+    if (!(input >> start >> terminal_count) || terminal_count < 0) {
+        std::cerr << "Invalid input file\n"; return 1;
     }
-
-    // Read all the queries in the file
-    file_input >> num_queries;
-    for(int i = 0; i < num_queries; i++){
+    std::vector<TerminalRule> terminals;
+    for (int i = 0; i < terminal_count; ++i) {
+        TerminalRule rule;
+        if (!(input >> rule.head >> rule.terminal)) { std::cerr << "Invalid terminal rule\n"; return 1; }
+        terminals.push_back(rule);
+    }
+    if (!(input >> binary_count) || binary_count < 0) { std::cerr << "Invalid binary count\n"; return 1; }
+    std::vector<BinaryRule> binaries;
+    for (int i = 0; i < binary_count; ++i) {
+        BinaryRule rule;
+        if (!(input >> rule.head >> rule.left >> rule.right)) { std::cerr << "Invalid binary rule\n"; return 1; }
+        binaries.push_back(rule);
+    }
+    if (!(input >> query_count) || query_count < 0) { std::cerr << "Invalid query count\n"; return 1; }
+    for (int i = 0; i < query_count; ++i) {
         std::string query;
-        file_input >> query;
-        // Store the query with a default accepted value of false
-        queries.push_back({query, false});
+        if (!(input >> query)) { std::cerr << "Missing query\n"; return 1; }
+        std::cout << query << ": " << (accepts(query, start, terminals, binaries) ? "ACCEPT" : "REJECT") << '\n';
     }
-
-    std::cout << "num_terminal: " << num_terminal << ", num_binary: " << num_binary << ", num_queries: " << num_queries << std::endl;
-
-    // Print terminals
-    std::cout << "Terminals recorded from file:" << std::endl;
-    for (const TerminalPair& tp : terminal_productions){
-        std::cout << tp.key << " " << tp.value << std::endl;
-    }
-
-    std::cout << "Binaries recorded from file:" << std::endl;
-    for (const BinaryPair& bp : binary_productions){
-        std::cout << bp.head << " " << bp.left << " " << bp.right << std::endl;
-    }
-
-    std::cout << "Queries recorded from file: " << std::endl;
-    for (const QueryPair& qp : queries){
-        std::cout << qp.query << std::endl;
-    }
+    return 0;
 }
