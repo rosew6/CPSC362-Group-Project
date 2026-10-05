@@ -15,7 +15,10 @@ Machine makeValidMachine() {
     return m;
 }
 
+int failures = 0;
+
 void check(const std::string& name, bool expected, bool actual){
+    if (expected != actual) ++failures;
     std::cout << (expected == actual ? "PASS " : "FAIL ") << name << ": expected " << expected << ", got " << actual << std::endl;
 }
 
@@ -88,5 +91,45 @@ int main() {
     addTransition(m8, "q0", '0', "q0", '1', Move::Left);
     check("duplicate transition", false, validateMachine(m8));
 
-    return 0;
+    Machine m = makeValidMachine();
+    auto accepted = simulate(m, "0", 1, true);
+    check("accept at step limit", true, accepted.status == Status::ACCEPTED);
+    check("trace includes initial and final", true, accepted.trace.size() == 2);
+    check("explicit rejection", true, simulate(m, "1", 10).status == Status::REJECTED);
+    check("invalid input", true, simulate(m, "2", 10).status == Status::INVALID_INPUT);
+    check("missing transition", true, simulate(m, "", 10).status == Status::HALTED_NO_TRANSITION);
+    check("zero step limit", true, simulate(m, "0", 0).status == Status::STEP_LIMIT);
+    Machine loop = makeValidMachine();
+    loop.transitions.clear();
+    addTransition(loop, "q0", 'B', "q0", 'B', Move::Left);
+    auto limited = simulate(loop, "", 3, true);
+    check("nonhalting step limit", true, limited.status == Status::STEP_LIMIT && limited.steps == 3 && limited.head == -3);
+    Machine left = makeValidMachine();
+    left.states.insert("q1");
+    left.tapeAlphabet.insert('X');
+    left.transitions.clear();
+    addTransition(left, "q0", 'B', "q1", 'B', Move::Left);
+    addTransition(left, "q1", 'B', "q_accept", 'X', Move::Right);
+    auto extended = simulate(left, "", 10);
+    check("write at negative position", true, extended.status == Status::ACCEPTED && readCell(extended.tape, -1, 'B') == 'X');
+    Machine right = makeValidMachine();
+    right.states.insert("q1");
+    right.tapeAlphabet.insert('X');
+    right.transitions.clear();
+    addTransition(right, "q0", '0', "q1", '0', Move::Right);
+    addTransition(right, "q1", 'B', "q_accept", 'X', Move::Left);
+    auto extendedRight = simulate(right, "0", 10);
+    check("write beyond input on right", true, readCell(extendedRight.tape, 1, 'B') == 'X');
+    std::map<long long, char> tape;
+    writeCell(tape, -3, 'X', 'B');
+    check("read negative cell", true, readCell(tape, -3, 'B') == 'X');
+    check("missing cell is blank", true, readCell(tape, 100, 'B') == 'B' && tape.size() == 1);
+    writeCell(tape, -3, 'B', 'B');
+    check("blank erases cell", true, tape.empty());
+    check("invalid machine simulation", true, simulate(m8, "0", 10).status == Status::INVALID_MACHINE);
+    Machine badMove = makeValidMachine();
+    badMove.transitions.begin()->second.move = static_cast<Move>(99);
+    check("invalid direction", false, validateMachine(badMove));
+    std::cout << "Failures: " << failures << '\n';
+    return failures == 0 ? 0 : 1;
 }
