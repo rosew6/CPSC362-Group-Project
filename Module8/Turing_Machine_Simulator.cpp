@@ -1,26 +1,3 @@
-
-Yes — I completed the Module 8 package based on the assignment requirements and the repository structure you showed. The C++ program compiles under -std=c++17 -Wall -Wextra -pedantic, and the verification suite currently passes 13/13 tests, including all six required result statuses, negative tape positions, right-side expansion, duplicate transitions, invalid machines, and trace output.
-
-Download the complete Module 8 submission package
-I also built the report using the same CPSC 362 report format you've used previously, included all five group members/roles, filled the implementation/design/testing/challenges/conclusion/reference sections, and visually checked all five rendered pages for formatting problems.
-
-There is one item I'd want before calling it 100% submission-ready: the assignment references a separate “Turing Machine Simulator Test Cases Programming Assignment (DOCX)”. That document wasn't among the files/screenshots available to me. I created a comprehensive 13-case suite from the assignment requirements, but I don't want to pretend those are necessarily the instructor's exact required cases. If you upload that test-case DOCX, I can compare it against what I built and make any necessary final changes to both the .cpp and report.
-
-I also surfaced the GitHub connection option; if you connect GitHub, we can work with the repository directly for the next step instead of you manually copying the completed files into Module8.
-
-
-Turing_Machine_Simulator.cpp
-Code
-
-README.md
-Document
-
-test_results.txt
-Document
-1 more
-
-
-
 #include <cstdint>
 #include <iostream>
 #include <map>
