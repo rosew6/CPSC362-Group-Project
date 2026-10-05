@@ -1,0 +1,24 @@
+PASS valid machine: expected true, got true
+PASS bad start state: expected false, got false
+PASS accept == reject: expected false, got false
+PASS blank missing from tape: expected false, got false
+PASS blank in input alphabet: expected false, got false
+PASS input symbol not in tape: expected false, got false
+PASS transition to unknown state: expected false, got false
+PASS transition writes unknown symbol: expected false, got false
+PASS duplicate transition: expected false, got false
+PASS accept at step limit: expected true, got true
+PASS trace includes initial and final: expected true, got true
+PASS explicit rejection: expected true, got true
+PASS invalid input: expected true, got true
+PASS missing transition: expected true, got true
+PASS zero step limit: expected true, got true
+PASS nonhalting step limit: expected true, got true
+PASS write at negative position: expected true, got true
+PASS write beyond input on right: expected true, got true
+PASS read negative cell: expected true, got true
+PASS missing cell is blank: expected true, got true
+PASS blank erases cell: expected true, got true
+PASS invalid machine simulation: expected true, got true
+PASS invalid direction: expected false, got false
+Failures: 0
