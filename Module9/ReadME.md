@@ -6,15 +6,15 @@ The authoritative source is Hopcroft, Motwani, and Ullman, Introduction to Autom
 - Implement exactly these base identifiers and stored classifications:
 
   Catalog ID	Classification	Recognition detail
-  TM_HAS_FIVE_STATES	DECIDABLE	RECURSIVE
-  TM_SOME_INPUT_AT_LEAST_FIVE_MOVES	DECIDABLE	RECURSIVE
-  TM_ACCEPTS_INPUT	UNDECIDABLE	RE_NOT_RECURSIVE
-  TM_HALTS_ON_INPUT	UNDECIDABLE	RE_NOT_RECURSIVE
-  TM_LANGUAGE_EMPTY	UNDECIDABLE	NON_RE
-  TM_LANGUAGE_FINITE	UNDECIDABLE	NOT_STATED_IN_CATALOG
-  PCP_HAS_MATCH	UNDECIDABLE	NOT_STATED_IN_CATALOG
-  CFG_AMBIGUOUS	UNDECIDABLE	NOT_STATED_IN_CATALOG
-  NOT_STATED_IN_CATALOG does not mean that no stronger result exists. It means this assignment requires only the classification established by the cited textbook passage.
+  - TM_HAS_FIVE_STATES	DECIDABLE	RECURSIVE
+  - TM_SOME_INPUT_AT_LEAST_FIVE_MOVES	DECIDABLE	RECURSIVE
+  - TM_ACCEPTS_INPUT	UNDECIDABLE	RE_NOT_RECURSIVE
+  - TM_HALTS_ON_INPUT	UNDECIDABLE	RE_NOT_RECURSIVE
+  - TM_LANGUAGE_EMPTY	UNDECIDABLE	NON_RE
+  - TM_LANGUAGE_FINITE	UNDECIDABLE	NOT_STATED_IN_CATALOG
+  - PCP_HAS_MATCH	UNDECIDABLE	NOT_STATED_IN_CATALOG
+  - CFG_AMBIGUOUS	UNDECIDABLE	NOT_STATED_IN_CATALOG
+  - NOT_STATED_IN_CATALOG does not mean that no stronger result exists. It means this assignment requires only the classification established by the cited textbook passage.
 
 - Store the entries in a std::map<std::string, CatalogEntry> or another exact-key lookup structure. Each record must contain the catalog ID, problem title, classification, recognizability, concise reason, and exact textbook citation.
 
