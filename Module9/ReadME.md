@@ -1,9 +1,9 @@
-Background
+## Background
 The authoritative source is Hopcroft, Motwani, and Ullman, Introduction to Automata Theory, Languages, and Computation, 3rd edition. Section 9.2.1, printed pages 383–384, defines a decidable problem as one for which a Turing machine always halts and answers correctly. Chapter 9 proves that no such algorithm exists for several problems in this assignment.
 
-System Description
+## System Description
 
-Implement exactly these base identifiers and stored classifications:
+#Implement exactly these base identifiers and stored classifications:
 
 Catalog ID	Classification	Recognition detail
 TM_HAS_FIVE_STATES	DECIDABLE	RECURSIVE
@@ -18,21 +18,15 @@ NOT_STATED_IN_CATALOG does not mean that no stronger result exists. It means thi
 
 Store the entries in a std::map<std::string, CatalogEntry> or another exact-key lookup structure. Each record must contain the catalog ID, problem title, classification, recognizability, concise reason, and exact textbook citation.
 
-Required Input Behavior
+##Required Input Behavior
 The user selects a catalog ID. You may normalize lowercase to uppercase and spaces or hyphens to underscores. After normalization, perform an exact-key lookup. Do not use substring rules such as if text contains "halt", and do not infer a classification from a paragraph supplied by the user.
 
 If the normalized identifier is not in the fixed catalog, return UNKNOWN for both classification and recognizability and state that the identifier is not in the fixed catalog and requires manual review.
 
-Required Output
-For a recognized ID, display:
+##Required Output
+For a recognized ID, display:normalized catalog ID; problem title; DECIDABLE or UNDECIDABLE; recognition detail; a concise reason; and the textbook section, printed page,  and theorem or example citation stored in the catalog.
 
-normalized catalog ID;
-problem title;
-DECIDABLE or UNDECIDABLE;
-recognition detail;
-a concise reason; and
-the textbook section, printed page, and theorem or example citation stored in the catalog.
-Assignment Details
+##Assignment Details
 For this assignment, first review the Decidability Case-Study Catalog Step-by-Step Tutorial (DOCX)Download Decidability Case-Study Catalog Step-by-Step Tutorial (DOCX). Next, read through the Decidability Case-Study Catalog Test Cases Programming Assignment (DOCX)Download Decidability Case-Study Catalog Test Cases Programming Assignment (DOCX). Complete the following steps:
 
 Define the classification enums and catalog record.
