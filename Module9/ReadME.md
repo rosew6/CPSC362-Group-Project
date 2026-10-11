@@ -47,7 +47,8 @@ For this assignment, first review the Decidability Case-Study Catalog Step-by-St
 ## Compilation
 <img width="1101" height="779" alt="image" src="https://github.com/user-attachments/assets/3badf9e4-2327-40e4-a46c-298c1c215a89" />
 <img width="1103" height="691" alt="image" src="https://github.com/user-attachments/assets/015eba83-e372-47c8-81b9-0f2560da1e73" />
-<img width="1100" height="700" alt="image" src="https://github.com/user-attachments/assets/f8ddd9a7-a4e9-45c3-a4a2-178f1b43b9aa" />
+<img width="711" height="148" alt="image" src="https://github.com/user-attachments/assets/dadd92f7-5583-468f-bbbd-c7f09279b2d3" />
+
 
 
 
